@@ -11,15 +11,13 @@ export class MakerModel extends TimeStamps {
 	rate: number
 
 	@prop()
-	lat?: number
+	location: {
+		lat: number;
+		long: number;
+		name_address: string;
+	}
 
 	@prop()
-	long?: number
-
-	@prop()
-	house_number?: number
-
-	@prop()
-	road?: string
+	barrier_free_elements: string[];
 
 }

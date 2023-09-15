@@ -1,15 +1,24 @@
-import { IsString, IsInt } from 'class-validator';
+import { IsArray, IsNumber, IsObject, IsString } from "class-validator";
 
 export class MarkerDto {
+  @IsString()
   name: string;
 
+  @IsNumber()
   rate: number;
 
-  lat?: number;
+  @IsObject()
+  location : {
+    
+    lat: number;
 
-  long?: number;
+    long: number;
+  
+    name_address: string;
+  
+  };
 
-  house_number?: number;
-
-  road?: string;
+  @IsArray()
+  barrier_free_elements : string[]
+ 
 }
