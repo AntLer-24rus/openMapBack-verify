@@ -17,7 +17,7 @@ async function bootstrap() {
   app.setGlobalPrefix('api')
   app.enableCors({
     origin: 'http://localhost:4200', // Укажите URL вашего клиента
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Укажите разрешенные методы
+    methods: ['GET', 'POST', 'PATCH', 'DELETE'], // Укажите разрешенные методы
   });
 
   await app.listen(port);
