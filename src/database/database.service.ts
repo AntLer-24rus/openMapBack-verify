@@ -1,5 +1,5 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
-import { MarkerDto } from "./dto/marker.dto";
+import { MarkerDto, UpdateMarkerDto } from "./dto/marker.dto";
 import { MakerModel } from "./marker.model";
 import { ModelType } from "@typegoose/typegoose/lib/types";
 import { InjectModel } from "nestjs-typegoose";
@@ -52,7 +52,7 @@ export class DatabaseService {
     return marker;
   }
 
-  async update(_id: string, dto: MarkerDto) {
+  async update(_id: string, dto: UpdateMarkerDto ) {
     const updateDoc = await this.MarkerModel.findByIdAndUpdate(_id, dto, {
       new: true
     }).exec();

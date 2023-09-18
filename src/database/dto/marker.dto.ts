@@ -1,4 +1,5 @@
-import { IsArray, IsNumber, IsObject, IsString } from "class-validator";
+import { PartialType } from "@nestjs/mapped-types";
+import { IsArray, IsNumber, IsObject, IsOptional, IsString } from "class-validator";
 
 export class MarkerDto {
   @IsString()
@@ -22,3 +23,6 @@ export class MarkerDto {
   barrier_free_elements : string[]
  
 }
+
+
+export class UpdateMarkerDto extends PartialType(MarkerDto) {}

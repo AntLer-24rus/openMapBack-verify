@@ -8,11 +8,12 @@ import {
   Param,
   Put,
   Body,
-  Query
+  Query,
+  Patch
 } from "@nestjs/common";
 import { DatabaseService } from "./database.service";
 import { IdValidationPipe } from "src/pipes/id.validation.pipe";
-import { MarkerDto } from "./dto/marker.dto";
+import { MarkerDto, UpdateMarkerDto } from "./dto/marker.dto";
 
 @Controller("marker")
 export class DatabaseController {
@@ -33,11 +34,11 @@ export class DatabaseController {
 
 
   @UsePipes(new ValidationPipe())
-  @Put(":id")
+  @Patch(":id")
   @HttpCode(200)
   async update(
     @Param("id", IdValidationPipe) id: string,
-    @Body() dto: MarkerDto
+    @Body() dto: UpdateMarkerDto
   ) {
     return this.databaseService.update(id, dto);
   }
