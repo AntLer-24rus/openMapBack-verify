@@ -1,15 +1,29 @@
-import { IsString, IsInt } from 'class-validator';
+import { PartialType } from "@nestjs/mapped-types";
+import { ArrayMinSize, IsArray, IsNumber, IsObject, IsOptional, IsString } from "class-validator";
 
 export class MarkerDto {
+  @IsString()
   name: string;
 
+  @IsNumber()
   rate: number;
 
-  lat?: number;
+  @IsObject()
+  location : {
+    
+    lat: number;
 
-  long?: number;
+    long: number;
+  
+    name_address: string;
+  
+  };
 
-  house_number?: number;
-
-  road?: string;
+  @IsArray()
+  @ArrayMinSize(1)
+  barrier_free_elements : string[]
+ 
 }
+
+
+export class UpdateMarkerDto extends PartialType(MarkerDto) {}
